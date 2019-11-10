@@ -3,14 +3,6 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const db = require('_helpers/db');
 const Judge = db.Judge;
-// const braintree = require('braintree');
-// var gateway = braintree.connect({
-//   environment: braintree.Environment.Sandbox,
-//   // Use your own credentials from the sandbox Control Panel here
-//   merchantId: "REMOVED",
-//   publicKey:  "REMOVED",
-//   privateKey: "REMOVED"
-// });
 
 
 module.exports = {
