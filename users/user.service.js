@@ -95,7 +95,7 @@ async function create(userParam) {
          //      }).then(user.save())
 
           //
-            // await user.save();
+          await user.save();
           // // hash password
           //
 
@@ -104,10 +104,10 @@ async function create(userParam) {
           // lastName: userParam.lastName,
           // email: userParam.email,
           //
-          user.save(function(err, res){
-                                  if (err){throw err;}
-                                   console.log('user is: ', res)
-                                 });
+          // user.save(function(err, res){
+          //                         if (err){throw err;}
+          //                          console.log('user is: ', res)
+          //                        });
 }
 
 async function update(id, userParam) {
