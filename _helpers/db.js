@@ -4,5 +4,5 @@ mongoose.connect(process.env.MONGODB_URI || config.connectionString, {  useCreat
 mongoose.Promise = global.Promise;
 
 module.exports = {
-    Judge: require('../users/judge.model')
+    Judge: require('../users/user.model')
 };
