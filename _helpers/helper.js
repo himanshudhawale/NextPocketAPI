@@ -2,7 +2,7 @@ const router = require('express').Router();
 const productModel = require('../users/team.model');
 var fs = require('fs');
 const db = require('./db1');
-const Product = db.Product;
+const Team = db.Team;
 const CircularJSON = require('circular-json');
 var result =  [
 	{
@@ -37,7 +37,7 @@ router.get('/add',  async(req,res)=>{
 
 
 router.get('/getTeam', async(req,res)=>{
-	const teamList = await Product.find({});
+	const teamList = await Team.find({});
 
 	if(teamList!=null)
 	{
