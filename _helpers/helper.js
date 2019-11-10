@@ -30,6 +30,7 @@ router.get('/add',  async(req,res)=>{
                 });
                 team.save();
     }
+		res.send("done"); 
 
 });
 
