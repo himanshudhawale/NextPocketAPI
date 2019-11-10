@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const teamModel = require('../users/team.model');
 var fs = require('fs');
-const db = require('./db1');
+const db = require('./teamdb');
 const Team = db.Team;
 const CircularJSON = require('circular-json');
 var result =  [
@@ -30,7 +30,7 @@ router.get('/add',  async(req,res)=>{
                 });
                 team.save();
     }
-		res.send("done"); 
+		res.send("done");
 
 });
 
