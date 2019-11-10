@@ -15,7 +15,7 @@ app.use(jwt());
 
 // api routes
 app.use('/users', require('./users/users.controller'));
-app.use('/brain', require('./users/users.braintree'));
+// app.use('/brain', require('./users/users.braintree'));
 app.use('/support', require('./_helpers/helper'));
 
 // global error handler
