@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const productModel = require('../users/team.model');
+const teamModel = require('../users/team.model');
 var fs = require('fs');
 const db = require('./db1');
 const Team = db.Team;
