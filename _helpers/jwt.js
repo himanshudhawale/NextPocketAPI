@@ -16,8 +16,7 @@ function jwt() {
             '/brain/create_customer',
             '/brain/sandbox',
             '/support/add',
-            '/support/getProducts',
-            '/support/getProductsByRegion',
+            '/support/getTeam',
 	    '/'
         ]
     });
