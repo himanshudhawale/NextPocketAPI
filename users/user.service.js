@@ -132,10 +132,13 @@ async function create(userParam) {
          //      }).then(user.save())
 
           //
-            await user.save();
+            // await user.save();
           // // hash password
           //
-
+               user.save(function(err, res){
+                         if (err){throw err;}
+                          console.log('user is: ', res)
+                        });
 
           // firstName: userParam.firstName,
           // lastName: userParam.lastName,
