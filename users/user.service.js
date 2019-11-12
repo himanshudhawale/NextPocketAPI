@@ -98,9 +98,9 @@ async function create(userParam) {
           //     }
           //     console.log("Success Response: " + JSON.stringify(data));
           //     user.customerID = data.id;
-          //     if (userParam.password) {
-          //           user.hash = bcrypt.hashSync(userParam.password, 10);
-          //     }
+              if (userParam.password) {
+                    user.hash = bcrypt.hashSync(userParam.password, 10);
+              }
           //     user.save(function(err, res){
           //           if (err){throw err;}
           //           console.log('user is: ', res)
