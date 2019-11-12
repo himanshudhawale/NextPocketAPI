@@ -17,8 +17,8 @@ module.exports = {
 
 async function authenticate({ email, password }) {
     const user = await Judge.findOne({ email });
-    if (user && bcrypt.compareSync(password, user.password)) {
-        const { password, ...userWithoutHash } = user.toObject();
+    if (user && bcrypt.compareSync(password, user.hash)) {
+        const { hash, ...userWithoutHash } = user.toObject();
         const token = jwt.sign({ sub: user.id }, config.secret);
         return {
             ...userWithoutHash,
