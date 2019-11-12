@@ -10,7 +10,6 @@
         "bcryptjs": "^2.4.3",
         "body-parser": "^1.19.0",
         "braintree": "^2.20.0",
-        "circular-json": "^0.5.9",
         "cors": "^2.8.4",
         "express": "^4.17.1",
         "express-jwt": "^5.3.1",
