@@ -3,7 +3,6 @@ const teamModel = require('../users/team.model');
 var fs = require('fs');
 const db = require('./teamdb');
 const Team = db.Team;
-const CircularJSON = require('circular-json');
 var result =  [
 	{
         "teamName": "ABC",
