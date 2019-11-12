@@ -1,8 +1,14 @@
 ﻿const config = require('config.json');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
-const db = require('_helpers/judgedb');
-const Judge = db.Judge;
+const db = require('_helpers/db');
+const User = db.User;
+const braintree = require('braintree');
+// var Simplify = require("simplify-commerce"),
+//     client = Simplify.getClient({
+//         publicKey: 'sbpb_OGI3MjliOTUtYWMyZS00ZTE4LWFmYTgtNTdkZDQ1NTBhZGFm',
+//         privateKey: '6IpmiveAFIhKuVmp6CONqGsVnJKfuPc4C2q1endRa2l5YFFQL0ODSXAOkNtXTToq'
+//     });
 
 
 module.exports = {
@@ -16,7 +22,7 @@ module.exports = {
 };
 
 async function authenticate({ email, password }) {
-    const user = await Judge.findOne({ email });
+    const user = await User.findOne({ email });
     if (user && bcrypt.compareSync(password, user.hash)) {
         const { hash, ...userWithoutHash } = user.toObject();
         const token = jwt.sign({ sub: user.id }, config.secret);
@@ -31,23 +37,23 @@ async function authenticate({ email, password }) {
 
 
 async function getAll() {
-    return await Judge.find().select('-hash');
+    return await User.find().select('-hash');
 }
 
 async function getById(id) {
-    return await Judge.findById(id).select('-hash');
+    return await User.findById(id).select('-hash');
 }
 
 async function create(userParam) {
     // validate
-    if (await Judge.findOne({ email: userParam.email})) {
+    if (await User.findOne({ email: userParam.email})) {
         throw 'Email "' + userParam.email  + '" is already taken';
     }
 
          // user.customerID=result.id;
-         const user =  new Judge(userParam);
+         const user =  new User(userParam);
 
-         //
+
          // gateway.customer.create({
          //          firstName: user.firstName,
          //          lastName: user.lastName,
@@ -61,18 +67,49 @@ async function create(userParam) {
          //      if (userParam.password) {
          //            user.hash = bcrypt.hashSync(userParam.password, 10);
          //          }
+         //
+         //      user.save(function(err, res){
+         //                if (err){throw err;}
+         //                 console.log('user is: ', res)
+         //               });
+         //
+         //    } else {
+         //      console.error(result.message);
+         //    }
+         //  }).catch(function (err) {
+         //    console.error(err);
+         //  });
 
-              // user.save(function(err, res){
-              //           if (err){throw err;}
-              //            console.log('user is: ', res)
-              //          });
 
-          //   } else {
-          //     console.error(result.message);
-          //   }
-          // }).catch(function (err) {
-          //   console.error(err);
+          // client.customer.create({
+          //     email : userParam.email,
+          //     name : userParam.firstName + " " + userParam.lastName,
+          //     // card : {
+          //     //    expMonth : "11",
+          //     //    expYear : "35",
+          //     //    cvc : "123",
+          //     //    number : "5555555555554444"
+          //     // },
+          //     reference : "Ref1"
+          // }, function(errData, data){
+          //     if(errData){
+          //         console.error("Error Message: " + errData.data.error.message);
+          //         return;
+          //     }
+          //     console.log("Success Response: " + JSON.stringify(data));
+          //     user.customerID = data.id;
+          //     if (userParam.password) {
+          //           user.hash = bcrypt.hashSync(userParam.password, 10);
+          //     }
+          //     user.save(function(err, res){
+          //           if (err){throw err;}
+          //           console.log('user is: ', res)
+          //     });
+          //
+          //
           // });
+
+
 
          // gateway.customer.create({
          //        firstName: user.firstName,
@@ -95,7 +132,7 @@ async function create(userParam) {
          //      }).then(user.save())
 
           //
-          await user.save();
+            await user.save();
           // // hash password
           //
 
@@ -104,20 +141,24 @@ async function create(userParam) {
           // lastName: userParam.lastName,
           // email: userParam.email,
           //
-          // user.save(function(err, res){
-          //                         if (err){throw err;}
-          //                          console.log('user is: ', res)
-          //                        });
+
+
+
+
 }
 
 async function update(id, userParam) {
-    const user = await Judge.findById(id);
+    const user = await User.findById(id);
 
     // validate
-    if (!user) throw 'Judge not found';
-    if (user.email !== userParam.email && await Judge.findOne({ email: userParam.email })) {
+    if (!user) throw 'User not found';
+    if (user.email !== userParam.email && await User.findOne({ email: userParam.email })) {
         throw 'Email"' + userParam.email + '" is already taken';
     }
+
+
+
+
 
     // hash password if it was entered
     if (userParam.password) {
@@ -127,12 +168,18 @@ async function update(id, userParam) {
     // copy userParam properties to user
     Object.assign(user, userParam);
 
-    await user.save();
+    user.save(function(err, res){
+          if (err){throw err;}
+          console.log('user is: ', res)
+
+
+
+    });
 
 
 
 }
 
 async function _delete(id) {
-    await Judge.findByIdAndRemove(id);
+    await User.findByIdAndRemove(id);
 }
