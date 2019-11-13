@@ -39,13 +39,13 @@ async function authenticate({ email, password }) {
 async function addResponse({req})
 {
   mydict={};
-  const user = await User.findById(req.body.id)
-  const team = await Team.findById(req.body.tid);
+  const user = await User.findById(req.id)
+  const team = await Team.findById(req.tid);
   if(team.score)
   {
     mydict=team.score;
   }
-  mydict[user._id] = req.body.score;
+  mydict[user._id] = req.score;
 
   let sum=0;
   for(var k in mydict)
