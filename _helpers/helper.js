@@ -47,6 +47,13 @@ router.get('/getTeam', async(req,res)=>{
 	}
 });
 
+router.get('/getTeamById', async(req, res)=>{
+	const team = await Team.findById(req);
+
+	res.send(team);
+
+});
+
 
 
 
