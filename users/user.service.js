@@ -42,8 +42,12 @@ async function getInfo(req)
   const secret = config.secret;
 
   var decoded = jwt.verify(req.token, secret);
-  console.log(decoded)
+  console.log(decoded.sub)
 
+
+  const user = await User.findById(decoded.sub);
+
+  return user;
 
   // return decoded
 }
