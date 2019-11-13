@@ -24,7 +24,7 @@ function authenticate(req, res, next) {
 
 
 function addResponse(req, res, next) {
-  userService.addResponse(req)
+  userService.addResponse(req.body)
       .then(user => user ? res.json(user) : res.status(400).json({ message: 'Wrong response'}))
       .catch(err => next(err));
 }
