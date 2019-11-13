@@ -3,6 +3,8 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const db = require('_helpers/db');
 const User = db.User;
+const teamdb = require('_helpers/teamdb')
+const Team = teamdb.Team;
 const braintree = require('braintree');
 // var Simplify = require("simplify-commerce"),
 //     client = Simplify.getClient({
@@ -33,7 +35,40 @@ async function authenticate({ email, password }) {
     }
 }
 
+async function addResponse({userParam})
+{
+  mydict={};
+  const user = await User.findById(userParam.id)
+  const team = await Team.findById(userParam.tid);
+  if(team.score)
+  {
+    mydict=team.score;
+  }
+  mydict[user._id] = req.body.score;
 
+  let sum=0;
+  for(var k in mydict)
+  {
+    var v = mydict[k];
+    sum+=parseInt(v);
+  }
+
+  console.log(sum);
+  var tot = Object.keys(mydict).length;
+  sum = sum/size;
+
+  team.score = mydict;
+  console.log(sum);
+
+  Object.assign(team, team);
+
+  team.save(function(err, res){
+        if (err){throw err;}
+        console.log('team is: ', res)
+  });
+
+  
+}
 
 
 async function getAll() {
