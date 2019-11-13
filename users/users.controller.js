@@ -11,6 +11,7 @@ router.get('/:id', getById);
 router.put('/:id', update);
 router.delete('/:id', _delete);
 router.post('/addResponse', addResponse);
+router.get('/getInfo', getInfo);
 
 
 module.exports = router;
@@ -20,6 +21,12 @@ function authenticate(req, res, next) {
         .then(user => user ? res.json(user) : res.status(400).json({ message: 'Email or password is incorrect' }))
         .catch(err => next(err));
 
+}
+
+function getInfo(req, res, next) {
+  userService.getInfo(req.body)
+      .then(user => user ? res.json(user) : res.status(400).json({ message: 'Wrong Token' }))
+      .catch(err => next(err));
 }
 
 
