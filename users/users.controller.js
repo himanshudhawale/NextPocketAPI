@@ -10,7 +10,7 @@ router.get('/current', getCurrent);
 router.get('/:id', getById);
 router.put('/:id', update);
 router.delete('/:id', _delete);
-router.post('/addResponse', response);
+router.post('/addResponse', addResponse);
 
 
 module.exports = router;
