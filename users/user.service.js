@@ -63,21 +63,28 @@ async function addResponse(req)
   // console.log(sum);
   var tot = Object.keys(mydict).length;
   sum = sum/tot;
-  team.sum = sum;
-  team.score[user._id]=mydict[user._id];
+  // team.sum = sum;
+  // team.score[user._id]=mydict[user._id];
+  // team
+  //
+  //
+  // // team.score = mydict;
+  // console.log(sum);
+  //
+  // const teamTemp = await Team.findById(team.id);
+  // Object.assign(teamTemp, team);
+  //
+  // teamTemp.save(function(err, res){
+  //       if (err){throw err;}
+  //       console.log('team is: ', res)
+  // });
+  await Team.findByIdAndUpdate({_id : team._id}, {
+    $set:{
+        score : mydict,
+        sum : sum
+    }});
 
-  // team.score = mydict;
-  console.log(sum);
-
-  const teamTemp = await Team.findById(team.id);
-  Object.assign(teamTemp, team);
-
-  teamTemp.save(function(err, res){
-        if (err){throw err;}
-        console.log('team is: ', res)
-  });
-
-  return teamTemp;
+  return team;
 
 }
 
