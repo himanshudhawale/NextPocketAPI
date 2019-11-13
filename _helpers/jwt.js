@@ -13,6 +13,7 @@ function jwt() {
             '/users/register',
             '/support/add',
             '/support/getTeam',
+            '/users/getInfo',
 
 	    '/'
         ]
