@@ -29,6 +29,7 @@ router.get('/add',  async(req,res)=>{
             const team =  new Team({
                 teamName : result[i].teamName,
                 score : result[i].score,
+								sum : result[i].sum
                 });
                 team.save();
     }
