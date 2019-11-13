@@ -39,6 +39,7 @@ async function authenticate({ email, password }) {
 async function addResponse(req)
 {
   mydict={};
+  console.log("Hello");
   console.log(req);
   const user = await User.findById(req.id)
   console.log(user);
