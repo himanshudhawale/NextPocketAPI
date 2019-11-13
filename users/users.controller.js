@@ -25,7 +25,7 @@ function authenticate(req, res, next) {
 
 function getInfo(req, res, next) {
   userService.getInfo(req.body)
-      .then(() => res.json({}))
+      .then(user => user ? res.json(user) : res.status(400).json({ message: 'Wrong token' }))
       .catch(err => next(err));
 }
 
