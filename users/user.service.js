@@ -40,7 +40,10 @@ async function addResponse(req)
 {
   mydict={};
   const user = await User.findById(req.id)
+  console.log(user);
   const team = await Team.findById(req.tid);
+  console.log(team);
+
   if(team.score)
   {
     mydict=team.score;
