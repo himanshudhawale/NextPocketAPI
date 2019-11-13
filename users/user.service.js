@@ -20,6 +20,7 @@ module.exports = {
     create,
     update,
     addResponse,
+    getInfo,
     delete: _delete
 
 };
@@ -34,6 +35,17 @@ async function authenticate({ email, password }) {
             token
         };
     }
+}
+
+async function getInfo(req)
+{
+  const secret = config.secret;
+
+  var decoded = jwt.verify(req.token, secret);
+  console.log(decoded)
+
+
+  return decoded
 }
 
 async function addResponse(req)
