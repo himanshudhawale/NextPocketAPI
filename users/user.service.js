@@ -44,6 +44,7 @@ async function addResponse(req)
   const user = await User.findById(req.id)
   // console.log(user);
   const team = await Team.findById(req.tid);
+  const team1 = await Team.findById(req.tid);
   // console.log(team);
 
   if(team.score)
@@ -62,11 +63,12 @@ async function addResponse(req)
   // console.log(sum);
   var tot = Object.keys(mydict).length;
   sum = sum/tot;
+  team.sum = sum;
 
-  // team.score = mydict;
+  team.score = mydict;
   console.log(sum);
 
-  Object.assign(team, team.score);
+  Object.assign(team1, team);
 
   team.save(function(err, res){
         if (err){throw err;}
