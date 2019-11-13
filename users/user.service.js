@@ -19,6 +19,7 @@ module.exports = {
     getById,
     create,
     update,
+    addResponse,
     delete: _delete
 
 };
