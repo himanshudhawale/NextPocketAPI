@@ -47,8 +47,8 @@ router.get('/getTeam', async(req,res)=>{
 	}
 });
 
-router.get('/getTeamById', async(req, res)=>{
-	const team = await Team.findById(req);
+router.post('/getTeamById', async(req, res)=>{
+	const team = await Team.findById(req.body.id);
 
 	res.send(team);
 
