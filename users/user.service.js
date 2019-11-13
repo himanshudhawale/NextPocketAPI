@@ -45,7 +45,7 @@ async function getInfo(req)
   console.log(decoded)
 
 
-  return decoded
+  // return decoded
 }
 
 async function addResponse(req)
