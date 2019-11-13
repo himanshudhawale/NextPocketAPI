@@ -65,7 +65,7 @@ async function addResponse(req)
   sum = sum/tot;
   team.sum = sum;
 
-  team.score = mydict;
+  // team.score = mydict;
   console.log(sum);
 
   const teamTemp = await Team.findById(team.id);
