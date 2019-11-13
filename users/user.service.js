@@ -35,11 +35,11 @@ async function authenticate({ email, password }) {
     }
 }
 
-async function addResponse({userParam})
+async function addResponse({req})
 {
   mydict={};
-  const user = await User.findById(userParam.id)
-  const team = await Team.findById(userParam.tid);
+  const user = await User.findById(req.body.id)
+  const team = await Team.findById(req.body.tid);
   if(team.score)
   {
     mydict=team.score;
@@ -67,7 +67,7 @@ async function addResponse({userParam})
         console.log('team is: ', res)
   });
 
-  
+
 }
 
 
