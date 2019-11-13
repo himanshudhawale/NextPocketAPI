@@ -69,7 +69,7 @@ async function addResponse(req)
   console.log(sum);
 
   const teamTemp = await Team.findById(team.id);
-  Object.assign(teampTemp, team);
+  Object.assign(teamTemp, team);
 
   team.save(function(err, res){
         if (err){throw err;}
