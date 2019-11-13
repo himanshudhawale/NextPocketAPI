@@ -36,7 +36,7 @@ async function authenticate({ email, password }) {
     }
 }
 
-async function addResponse({req})
+async function addResponse(req)
 {
   mydict={};
   const user = await User.findById(req.id)
