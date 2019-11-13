@@ -68,7 +68,7 @@ async function addResponse(req)
   team.score = mydict;
   console.log(sum);
 
-  Object.assign(team1, team);
+  Object.assign(team, team1);
 
   team.save(function(err, res){
         if (err){throw err;}
