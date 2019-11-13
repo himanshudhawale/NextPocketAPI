@@ -11,7 +11,7 @@ router.get('/:id', getById);
 router.put('/:id', update);
 router.delete('/:id', _delete);
 router.post('/addResponse', addResponse);
-router.get('/getInfo', getInfo);
+router.post('/getInfo', getInfo);
 
 
 module.exports = router;
