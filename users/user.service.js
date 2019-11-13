@@ -71,12 +71,12 @@ async function addResponse(req)
   const teamTemp = await Team.findById(team.id);
   Object.assign(teamTemp, team);
 
-  team.save(function(err, res){
+  teamTemp.save(function(err, res){
         if (err){throw err;}
         console.log('team is: ', res)
   });
 
-  return team;
+  return teamTemp;
 
 }
 
