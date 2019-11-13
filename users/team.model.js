@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 
 const schema = new Schema({
     teamName: { type: String, required: true},
-    score: { type: String, required: true}
+    score: { type: Object, required: true}
 });
 
 schema.set('toJSON', { virtuals: true });
