@@ -39,12 +39,12 @@ async function authenticate({ email, password }) {
 async function addResponse(req)
 {
   mydict={};
-  console.log("Hello");
-  console.log(req);
+  // console.log("Hello");
+  // console.log(req);
   const user = await User.findById(req.id)
-  console.log(user);
+  // console.log(user);
   const team = await Team.findById(req.tid);
-  console.log(team);
+  // console.log(team);
 
   if(team.score)
   {
@@ -59,14 +59,14 @@ async function addResponse(req)
     sum+=parseInt(v);
   }
 
-  console.log(sum);
+  // console.log(sum);
   var tot = Object.keys(mydict).length;
   sum = sum/tot;
 
-  team.score = mydict;
+  // team.score = mydict;
   console.log(sum);
 
-  Object.assign(team, team);
+  Object.assign(team, team.score);
 
   team.save(function(err, res){
         if (err){throw err;}
