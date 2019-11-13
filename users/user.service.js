@@ -73,6 +73,7 @@ async function addResponse(req)
         console.log('team is: ', res)
   });
 
+  return team;
 
 }
 
@@ -219,9 +220,6 @@ async function update(id, userParam) {
 
 
     });
-
-
-
 }
 
 async function _delete(id) {
