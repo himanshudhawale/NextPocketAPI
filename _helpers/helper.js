@@ -6,15 +6,15 @@ const Team = db.Team;
 var result =  [
 	{
         "teamName": "ABC",
-        "score": "0"
+        "score": {}
     },
 		{
 	        "teamName": "DEF",
-	        "score": "0"
+	        "score": {}
 	    },
 			{
 		        "teamName": "GHI",
-		        "score": "0"
+		        "score": {}
 		 }
 
 ]
