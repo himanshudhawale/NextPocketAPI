@@ -64,6 +64,7 @@ async function addResponse(req)
   var tot = Object.keys(mydict).length;
   sum = sum/tot;
   team.sum = sum;
+  team.score[user._id]=mydict[user._id];
 
   // team.score = mydict;
   console.log(sum);
