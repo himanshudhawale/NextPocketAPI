@@ -1,4 +1,4 @@
 'use strict';
 
-module.exports.apiLoginKey = 'REMOVED';
-module.exports.transactionKey = 'REMOVED';
+module.exports.apiLoginKey = '';
+module.exports.transactionKey = '';

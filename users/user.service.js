@@ -6,11 +6,6 @@ const User = db.User;
 const teamdb = require('_helpers/teamdb')
 const Team = teamdb.Team;
 const braintree = require('braintree');
-// var Simplify = require("simplify-commerce"),
-//     client = Simplify.getClient({
-//         publicKey: 'REMOVED',
-//         privateKey: 'REMOVED'
-//     });
 
 
 module.exports = {
