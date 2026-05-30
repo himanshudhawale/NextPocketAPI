@@ -1,4 +1,4 @@
-﻿const config = require('config.json');
+const config = require('config.json');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const db = require('_helpers/db');
@@ -24,7 +24,7 @@ async function authenticate({ email, password }) {
     const user = await User.findOne({ email });
     if (user && bcrypt.compareSync(password, user.hash)) {
         const { hash, ...userWithoutHash } = user.toObject();
-        const token = jwt.sign({ sub: user.id }, config.secret);
+        const token = jwt.sign({ sub: user.id }, (process.env.JWT_SECRET || config.secret));
         return {
             ...userWithoutHash,
             token
@@ -34,7 +34,7 @@ async function authenticate({ email, password }) {
 
 async function getInfo(req)
 {
-  const secret = config.secret;
+  const secret = (process.env.JWT_SECRET || config.secret);
 
   var decoded = jwt.verify(req.token, secret);
   console.log(decoded.sub)
